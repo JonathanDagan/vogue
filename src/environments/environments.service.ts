@@ -5,7 +5,7 @@ import { UpdateEnvironmentDto } from './dto/update-environment.dto';
 
 @Injectable()
 export class EnvironmentsService {
-  constructor(private prisma: PrismaService) { }
+  constructor(private prisma: PrismaService) {}
 
   create(createEnvironmentDto: CreateEnvironmentDto) {
     return this.prisma.environment.create({ data: createEnvironmentDto });

@@ -5,7 +5,7 @@ import { UpdateLocationDto } from './dto/update-location.dto';
 
 @Injectable()
 export class LocationsService {
-  constructor(private prisma: PrismaService) { }
+  constructor(private prisma: PrismaService) {}
 
   create(createLocationDto: CreateLocationDto) {
     return this.prisma.location.create({ data: createLocationDto });

@@ -1,10 +1,17 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { NetworksService } from './networks.service';
 import { CreateNetworkDto } from './dto/create-network.dto';
 import { UpdateNetworkDto } from './dto/update-network.dto';
 import { ApiCreatedResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { NetworkEntity } from './entities/network.entity';
-
 
 @Controller('networks')
 @ApiTags('Networks')
@@ -18,25 +25,25 @@ export class NetworksController {
   }
 
   @Get()
-  @ApiOkResponse({type: NetworkEntity, isArray: true})
+  @ApiOkResponse({ type: NetworkEntity, isArray: true })
   findAll() {
     return this.networksService.findAll();
   }
 
   @Get(':id')
-  @ApiOkResponse({type: NetworkEntity})
+  @ApiOkResponse({ type: NetworkEntity })
   findOne(@Param('id') id: string) {
     return this.networksService.findOne(+id);
   }
 
   @Patch(':id')
-  @ApiOkResponse({type: NetworkEntity})
+  @ApiOkResponse({ type: NetworkEntity })
   update(@Param('id') id: string, @Body() updateNetworkDto: UpdateNetworkDto) {
     return this.networksService.update(+id, updateNetworkDto);
   }
 
   @Delete(':id')
-  @ApiOkResponse({type: NetworkEntity})
+  @ApiOkResponse({ type: NetworkEntity })
   remove(@Param('id') id: string) {
     return this.networksService.remove(+id);
   }

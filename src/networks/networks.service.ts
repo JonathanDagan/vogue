@@ -5,7 +5,7 @@ import { UpdateNetworkDto } from './dto/update-network.dto';
 
 @Injectable()
 export class NetworksService {
-  constructor(private prisma: PrismaService) { }
+  constructor(private prisma: PrismaService) {}
 
   create(createNetworkDto: CreateNetworkDto) {
     return this.prisma.network.create({ data: createNetworkDto });

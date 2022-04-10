@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { EnvironmentsService } from './environments.service';
 import { CreateEnvironmentDto } from './dto/create-environment.dto';
 import { UpdateEnvironmentDto } from './dto/update-environment.dto';
@@ -17,25 +25,28 @@ export class EnvironmentsController {
   }
 
   @Get()
-  @ApiOkResponse({type: EnvironmentEntity, isArray: true})
+  @ApiOkResponse({ type: EnvironmentEntity, isArray: true })
   findAll() {
     return this.environmentsService.findAll();
   }
 
   @Get(':id')
-  @ApiOkResponse({type: EnvironmentEntity})
+  @ApiOkResponse({ type: EnvironmentEntity })
   findOne(@Param('id') id: string) {
     return this.environmentsService.findOne(+id);
   }
 
   @Patch(':id')
-  @ApiOkResponse({type: EnvironmentEntity})
-  update(@Param('id') id: string, @Body() updateEnvironmentDto: UpdateEnvironmentDto) {
+  @ApiOkResponse({ type: EnvironmentEntity })
+  update(
+    @Param('id') id: string,
+    @Body() updateEnvironmentDto: UpdateEnvironmentDto,
+  ) {
     return this.environmentsService.update(+id, updateEnvironmentDto);
   }
 
   @Delete(':id')
-  @ApiOkResponse({type: EnvironmentEntity})
+  @ApiOkResponse({ type: EnvironmentEntity })
   remove(@Param('id') id: string) {
     return this.environmentsService.remove(+id);
   }

@@ -4,6 +4,6 @@ import { EnvironmentsController } from './environments.controller';
 
 @Module({
   controllers: [EnvironmentsController],
-  providers: [EnvironmentsService]
+  providers: [EnvironmentsService],
 })
 export class EnvironmentsModule {}
