@@ -32,6 +32,13 @@ $ yarn start:prod
 $ docker run -t -p 8080:8080 vogue:1.0.0
 ```
 
+## Environment Variables
+|Name|Value|
+|:-:|:-:|
+|DATABASE_URL|"mysql://{USER}:{PASSWORD}@localhost:3306/{DB}"|
+|PORT|8080|
+
+
 ## Test
 
 ```bash
