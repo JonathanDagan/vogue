@@ -78,7 +78,7 @@
     "testEnvironment": "node"
   },
   "lint-staged": {
-    "*.ts": "yarn lint"
+    "*.ts": ["yarn lint", "git add"]
   },
   "husky": {
     "hooks": {
