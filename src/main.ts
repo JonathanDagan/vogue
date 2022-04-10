@@ -11,6 +11,7 @@ async function bootstrap() {
   const config = new DocumentBuilder()
     .setTitle('Vogue API')
     .setDescription('Catalog Service API')
+    // TODO: Add versioning from package.json
     .setVersion('1.0.0')
     .build();
   const document = SwaggerModule.createDocument(app, config);
