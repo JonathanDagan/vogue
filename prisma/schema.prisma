@@ -1,0 +1,60 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Location {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  Region    Region[]
+}
+
+model Network {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  Region    Region[]
+}
+
+model Environment {
+  id        Int      @id @default(autoincrement())
+  name      String?  @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  Region    Region[]
+}
+
+model Service {
+  id          Int      @id @default(autoincrement())
+  title       String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  content     String?
+  isSupported Boolean? @default(false)
+  region      Region?  @relation(fields: [RegionId], references: [id])
+  RegionId    Int?
+}
+
+model Region {
+  id             Int          @id @default(autoincrement())
+  name           String?      @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  environment   Environment? @relation(fields: [environmentId], references: [id])
+  location       Location?    @relation(fields: [locationId], references: [id])
+  network        Network?     @relation(fields: [networkId], references: [id])
+  environmentId Int?
+  locationId     Int?
+  networkId      Int?
+  services       Service[]
+}
